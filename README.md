@@ -11,4 +11,4 @@ What could be improved: I could possibly include a button to submit responses, o
 
 If there are any comments that other Github users would like to share, please feel free to do so using my page.
 
-Link to Demo: https://PurpleMonkeyDishwasher-webdev.github.io/rockPaperScissors
+Link to Demo: https://PurpleMonkeyDishwasher-webdev.github.io/rock-paper-scissors

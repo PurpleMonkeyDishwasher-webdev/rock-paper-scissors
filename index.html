@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+
+            // Global Variables
+            let playerScore = 0;
+            let computerScore = 0;
+            let tieScore = 0;
+
+            game();
+
+            function game() {
+                // Looping five rounds of game
+                for (let i = 1; i < 6; i++) {
+                    playerSelection = calcPlayer(i);
+                    computerSelection = calcComputer();
+                    playRound(playerSelection, computerSelection, i);
+                }
+                // Displaying game results
+                console.log(`Final results: Your score: ${playerScore}. The computer score: ${computerScore}. Ties: ${tieScore}`);
+                if (playerScore > computerScore) {
+                    console.log("You won the game! Huzzah!");
+                } else if (playerScore < computerScore) {
+                    console.log("You lost the game! They must have cheated")
+                } else {
+                    console.log("There are no winners this game.  And no winners means there are only losers...")
+                } 
+            }
+                
+            function playRound(playerSelection, computerSelection, i) {
+                // Printing and tallying outcome of the round
+                if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+                    alert(`Round #${i} results: You Win! Scissors beats Paper`);
+                    console.log(`Round #${i} results: You Win! Scissors beats Paper`);
+                    return playerScore += 1;  
+                } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+                    alert(`Round #${i} results: You Win! Paper beats Rock`);
+                    console.log(`Round #${i} results: You Win! Paper beats Rock`);
+                    return playerScore += 1;  
+                } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+                    alert(`Round #${i} results: You Win! Rock beats Scissors`);
+                    console.log(`Round #${i} results: You Win! Rock beats Scissors`);
+                    return playerScore += 1;
+                } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
+                    console.log(`Round #${i} results: You Lose! Scissors beats Paper`);
+                    return computerScore += 1;
+                } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
+                    alert(`Round #${i} results: You Lose! Paper beats Rock`);
+                    console.log(`Round #${i} results: You Lose! Paper beats Rock`);
+                    return computerScore += 1;
+                } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
+                    alert(`Round #${i} results: You Lose! Rock beats Scissors`);
+                    console.log(`Round #${i} results: You Lose! Rock beats Scissors`);
+                    return computerScore += 1;
+                } else if (playerSelection === computerSelection) {
+                    alert(`Round #${i} results: It's a Tie! You both entered ${playerSelection.charAt(0)+playerSelection.substring(1).toLowerCase()}`);
+                    console.log(`Round #${i} results: It's a Tie! You both entered ${playerSelection.charAt(0)+playerSelection.substring(1).toLowerCase()}`);
+                    return tieScore += 1;
+                }
+            }
+
+            function calcPlayer(i) {
+                // Receiving player selection
+                decision = window.prompt(`Round #${i} - Which shape will you use to vanquish your foe?:`);
+                while ((!Boolean(decision.match(/^[r][o][c][k]$/i))) && (!Boolean(decision.match(/^[p][a][p][e][r]$/i))) && (!Boolean(decision.match(/^[s][c][i][s][s][o][r][s]$/i)))) {
+                    decision = window.prompt(`Round #${1} - Please attempt your onslaught again using a valid input (Rock, Paper, or Scissors):`);
+                }
+                decision = decision.toUpperCase();
+                return decision;
+            }
+
+            function calcComputer() {
+                // Randomly determining computer selection
+                items = ["ROCK", "PAPER", "SCISSORS"];
+                randomizer = Math.floor(Math.random() * 3);
+                decision = items[randomizer];
+                return decision;
+            }
+            
+        </script>
+    </body>
+</html>
+
+
+
+
